@@ -5,7 +5,7 @@ const router = express.Router();
 
 type EmojiResponse = string[];
 
-router.get<{}, EmojiResponse | string>('/', async (req, res) => {
+router.post<{}, EmojiResponse | string>('/', async (req, res) => {
   try {
     const message = req.body;
     const location = {

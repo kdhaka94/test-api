@@ -7,6 +7,7 @@ import * as middlewares from './middlewares';
 import api from './api';
 import MessageResponse from './interfaces/MessageResponse';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
 require('dotenv').config();
 const mongooseOption: mongoose.ConnectOptions = {
@@ -27,6 +28,7 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get<{}, MessageResponse>('/', (req, res) => {
   res.json({
