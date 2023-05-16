@@ -18,7 +18,6 @@ router.get<{}, EmojiResponse | string>('/', async (req, res) => {
     console.error('Error handling incoming message:', err.message);
     res.status(500).send('Internal server error');
   }
-  res.json(['😀', '😳', '🙄']);
 });
 
 export default router;
