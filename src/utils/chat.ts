@@ -1,14 +1,13 @@
 
-import twilio from 'twilio';
 import { Configuration, OpenAIApi } from 'openai';
 import { Maid } from '../models/maid';
 import { User } from '../models/user';
+import { client } from '../app';
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
-export const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 export async function chatGPT(prompt: string) {
   try {
     const result = await openai.createCompletion({
